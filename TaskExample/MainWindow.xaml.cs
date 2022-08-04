@@ -145,7 +145,7 @@ namespace TaskExample
             {
                 final_result = await outerMethod();
                 Console.WriteLine("Task 1 finsihed result:" + final_result.ToString());
-            });
+            }).Wait();
             Console.WriteLine("Task_await_await_wait exited ");
         }
 
