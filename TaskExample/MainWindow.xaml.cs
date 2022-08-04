@@ -30,7 +30,8 @@ namespace TaskExample
         {
             Console.WriteLine("Button Click start");
             //startSleepAndReturnWithCount(5000);
-            startSleepAndReturn(5000);
+            //startSleepAndReturn(5000);
+            Task_await_await_wait();
             Console.WriteLine("Button Click stop");
         }
         /* The async modifier can be applied only to methods (and lambda
@@ -112,6 +113,40 @@ namespace TaskExample
         {
             int sleepTime = await SleepTaskAsynRetCount(count);
             Console.WriteLine("sleep Completed:" + sleepTime);
+        }
+
+        async Task<bool> outerMethod()
+        {
+            bool retVal = true;
+            int count = 0;
+            Console.WriteLine("outerMethod started");
+            count = await innerMethod();
+            Console.WriteLine("outerMethod end");
+            if (count == 5)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        Task<int> innerMethod()
+        {
+            Console.WriteLine("innerMethod started");
+            return Task.Factory.StartNew(() => { Thread.Sleep(5000); return 5; });
+        }
+
+        void Task_await_await_wait()
+        {
+            bool final_result = false;
+            Task.Factory.StartNew(async () =>
+            {
+                final_result = await outerMethod();
+                Console.WriteLine("Task 1 finsihed result:" + final_result.ToString());
+            });
+            Console.WriteLine("Task_await_await_wait exited ");
         }
 
     }
