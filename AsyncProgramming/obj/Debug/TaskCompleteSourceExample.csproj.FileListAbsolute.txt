@@ -1,0 +1,14 @@
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\bin\Debug\AsyncProgramming.exe.config
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\bin\Debug\AsyncProgramming.exe
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\bin\Debug\AsyncProgramming.pdb
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\TaskCompleteSourceExample.csprojAssemblyReference.cache
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\MainWindow.baml
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\MainWindow.g.cs
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\App.g.cs
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\AsyncProgramming_MarkupCompile.cache
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\AsyncProgramming_MarkupCompile.lref
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\AsyncProgramming.g.resources
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\AsyncProgramming.Properties.Resources.resources
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\TaskCompleteSourceExample.csproj.GenerateResource.cache
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\AsyncProgramming.exe
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncProgramming\obj\Debug\AsyncProgramming.pdb
