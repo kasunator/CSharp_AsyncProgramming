@@ -30,7 +30,8 @@ namespace TaskExample
         {
             Console.WriteLine("Button Click start");
             //startSleepAndReturnWithCount(5000);
-            startSleepAndReturn(5000);
+            //startSleepAndReturn(5000);
+            startExceptionTaskAndTryToCathcIt();
             Console.WriteLine("Button Click stop");
         }
         /* The async modifier can be applied only to methods (and lambda
@@ -80,6 +81,54 @@ namespace TaskExample
             return if there are pending work on the UI message queue then executes them, such as UI events. Once awaited 
             task completes the continuation also executes as an event on the UI message queue, leading to the execution of what is inside  
             awaiter.OnCompleted ( () = > {} ) This executes the what is remaining after the await expression.
+
+             ****EXCEPTION handling in tasks*****
+            If the code inside the task throws an unhandled exception, that exception is automatically re-thrown to whoever calls wait() or accesses the
+            result property of a Task<TResult>.
+            When this exception is trhown to the waiter or the accessor of the result, the CLR wrpas the exception in an AggregatedException.
+
+            Example:
+            // Start a Task that throws a NullReferenceException:
+            Task task = Task.Run (() => { throw null; });
+            try
+            {
+                task.Wait();
+            }
+            catch (AggregateException aex)
+            {
+                if (aex.InnerException is NullReferenceException)
+                Console.WriteLine ("Null!");
+                else
+                throw;
+            }
+
+
+            You can test for a faulted task without making it throw by calling wait or result. The exception can be tested via the IsFaul
+                IsFaulted and IsCanceled properties of the Task. If both properties return false, no error
+            occurred; if IsCanceled is true, an OperationCanceledOperation was thrown for that
+            task ; if IsFaulted is true, another type of exception was thrown and the Exception property will indicate the error.
+
+            **Autonomous task exceptions**
+            With autonomous “set-and-forget” tasks (those for which you don’t rendezvous via
+            Wait() or Result, or a continuation that does the same), 
+            it’s good practice to explicitly exception-handle the task code to avoid silent failure, just as you would with a
+            thread.
+
+            You can subscribe to unobserved exceptions at a global level via the static event
+            TaskScheduler.UnobservedTaskException; handling this event and logging the error
+            can make good sense.
+            There are a couple of interesting nuances on what counts as unobserved:
+            • Tasks waited upon with a timeout will generate an unobserved exception if the
+                faults occurs after the timeout interval.
+            • The act of checking a task’s Exception property after it has faulted makes the exception “observed.”
+
+            *** Task countinuations exception ***
+            * If an antecedent task faults, the exception is re-thrown when the continuation code
+            calls awaiter.GetResult(). Rather than calling GetResult, we could simply access
+            the Result property of the antecedent. The benefit of calling GetResult is that if the
+            antecedent faults, the exception is thrown directly without being wrapped in Aggre
+            gateException, allowing for simpler and cleaner catch blocks.
+
          */
 
 
@@ -112,6 +161,26 @@ namespace TaskExample
         {
             int sleepTime = await SleepTaskAsynRetCount(count);
             Console.WriteLine("sleep Completed:" + sleepTime);
+        }
+
+        /* this compute bound task will throw and exception */
+        Task<int> throwTestTaskException()
+        {
+            return Task.Run(() => { Thread.Sleep(2000); throw new Exception( "Will this be ignored"); return -1; });
+        }
+
+        /* This async function will await the throwTestTaskException() method and try t catch its exception*/
+        async void startExceptionTaskAndTryToCathcIt()
+        {
+           try
+           {
+            int result = await throwTestTaskException();
+
+           }
+           catch(Exception e)
+           {
+              Console.WriteLine("Exception caught:" + e.ToString());
+           }
         }
 
     }
