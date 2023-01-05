@@ -1,0 +1,14 @@
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\bin\Debug\AsyncAwaitPitfalls.exe.config
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\bin\Debug\AsyncAwaitPitfalls.exe
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\bin\Debug\AsyncAwaitPitfalls.pdb
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\AsyncAwaitPitfalls.csprojAssemblyReference.cache
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\MainWindow.g.cs
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\App.g.cs
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\AsyncAwaitPitfalls_MarkupCompile.cache
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\AsyncAwaitPitfalls_MarkupCompile.lref
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\MainWindow.baml
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\AsyncAwaitPitfalls.g.resources
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\AsyncAwaitPitfalls.Properties.Resources.resources
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\AsyncAwaitPitfalls.csproj.GenerateResource.cache
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\AsyncAwaitPitfalls.exe
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\AsyncAwaitPitfalls\obj\Debug\AsyncAwaitPitfalls.pdb

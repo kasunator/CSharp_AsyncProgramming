@@ -1,0 +1,14 @@
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\bin\Debug\TaskSchedulingTest.exe.config
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\bin\Debug\TaskSchedulingTest.exe
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\bin\Debug\TaskSchedulingTest.pdb
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\TaskSchedulingTest.csprojAssemblyReference.cache
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\MainWindow.g.cs
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\App.g.cs
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\TaskSchedulingTest_MarkupCompile.cache
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\TaskSchedulingTest_MarkupCompile.lref
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\MainWindow.baml
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\TaskSchedulingTest.g.resources
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\TaskSchedulingTest.Properties.Resources.resources
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\TaskSchedulingTest.csproj.GenerateResource.cache
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\TaskSchedulingTest.exe
+C:\Private_Projects\WPF_Scheduling_test\TaskSchedulingTest\TaskSchedulingTest\obj\Debug\TaskSchedulingTest.pdb

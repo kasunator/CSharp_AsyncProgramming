@@ -1,0 +1,14 @@
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\bin\Debug\FileCRCCalculation.exe.config
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\bin\Debug\FileCRCCalculation.exe
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\bin\Debug\FileCRCCalculation.pdb
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\FileCRCCalculation.csprojAssemblyReference.cache
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\MainWindow.g.cs
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\App.g.cs
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\FileCRCCalculation_MarkupCompile.cache
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\FileCRCCalculation_MarkupCompile.lref
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\MainWindow.baml
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\FileCRCCalculation.g.resources
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\FileCRCCalculation.Properties.Resources.resources
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\FileCRCCalculation.csproj.GenerateResource.cache
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\FileCRCCalculation.exe
+C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\FileCRCCalculation\obj\Debug\FileCRCCalculation.pdb
