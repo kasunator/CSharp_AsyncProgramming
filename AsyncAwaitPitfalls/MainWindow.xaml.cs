@@ -18,6 +18,31 @@ namespace AsyncAwaitPitfalls
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// This project shows how the pitfalls of using await within conditional statements
+    /// 
+    /*      Console.WriteLine("stated await within condition");
+            if (flag == 1)
+            {
+                await asyncWork();
+                Console.Writeline("await complet");
+            }
+            else
+            {
+                Console.Writeline("flag not set");
+            }
+            Console.WriteLine("Flag check completed");
+
+      The whole objective of this project is to demonstrate that if the flag is set we should
+      expect the following output.
+      :> tated await within condition
+      :> Flag check completed
+      ... after few seconds 
+      :> await complet
+
+        So only the part within the conditional statement after the await satatement is completed
+        after the completion of the asyncWork()
+
+    */
     /// </summary>
     public partial class MainWindow : Window
     {
