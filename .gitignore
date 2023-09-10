@@ -1,0 +1,15 @@
+AsyncAwaitPitfalls/bin/
+AsyncAwaitPitfalls/obj/
+.vs/UniversalFreescaleUpdater/v16/.suo
+AsyncProgramming/bin/
+AsyncProgramming/obj/
+FileCRCCalculation/bin/
+FileCRCCalculation/obj/
+streamWriterConsoleToFile/bin/
+streamWriterConsoleToFile/obj/
+TaskExample/bin/
+TaskExample/obj/
+TaskSchedulingAndUSBEventTest/bin/
+TaskSchedulingAndUSBEventTest/obj/
+WaitPitFalls/bin/
+WaitPitFalls/obj/

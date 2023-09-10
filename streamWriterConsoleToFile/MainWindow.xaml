@@ -1,0 +1,14 @@
+﻿<Window x:Class="streamWriterConsoleToFile.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:streamWriterConsoleToFile"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="write with SreamWriter" HorizontalAlignment="Left" Margin="90,140,0,0" VerticalAlignment="Top" Width="160" Height="25" Click="StreamWriter_Click"/>
+        <Button Content="File Stream Writer" HorizontalAlignment="Left" Margin="90,220,0,0" VerticalAlignment="Top" Width="160" Height="25" Click="FileStream_Click"/>
+
+    </Grid>
+</Window>
