@@ -1,5 +1,0 @@
-C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\WaitPitFalls\obj\Debug\netcoreapp3.1\WaitPitFalls.csprojAssemblyReference.cache
-C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\WaitPitFalls\obj\Debug\netcoreapp3.1\WaitPitFalls.AssemblyInfoInputs.cache
-C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\WaitPitFalls\obj\Debug\netcoreapp3.1\WaitPitFalls.AssemblyInfo.cs
-C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\WaitPitFalls\obj\Debug\netcoreapp3.1\WaitPitFalls.dll
-C:\Private_Projects\WPF_AsyncProgramming\AsyncProgramming\WaitPitFalls\obj\Debug\netcoreapp3.1\WaitPitFalls.pdb
