@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaitPitFalls", "WaitPitFall
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedulingAndUSBEventTest", "TaskSchedulingAndUSBEventTest\TaskSchedulingAndUSBEventTest.csproj", "{56ACEAD7-889A-411E-AF15-F7C6F19AA465}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskExample", "AsyncAwaitExample\TaskExample.csproj", "{2191E35E-7D1F-4BFF-A29A-9155B0B4FFCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitExample", "AsyncAwaitExample\AsyncAwaitExample.csproj", "{2191E35E-7D1F-4BFF-A29A-9155B0B4FFCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
