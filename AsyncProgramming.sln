@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskCompleteSourceExample", "AsyncProgramming\TaskCompleteSourceExample.csproj", "{11FD02BA-093C-493E-8B91-A897463EDE67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskExample", "TaskExample\TaskExample.csproj", "{2191E35E-7D1F-4BFF-A29A-9155B0B4FFCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitExample", "TaskExample\AsyncAwaitExample.csproj", "{2191E35E-7D1F-4BFF-A29A-9155B0B4FFCA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCRCCalculation", "FileCRCCalculation\FileCRCCalculation.csproj", "{A08EF461-A106-4528-B6F1-0806B728399C}"
 EndProject
