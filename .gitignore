@@ -2,8 +2,8 @@ AsyncAwaitPitfalls/bin/
 AsyncAwaitPitfalls/obj/
 .vs/AsyncProgramming/v16/.suo
 .vs/
-AsyncProgramming/bin/
-AsyncProgramming/obj/
+TaskCompleteSourceExample/bin/
+TaskCompleteSourceExample/obj/
 FileCRCCalculation/bin/
 FileCRCCalculation/obj/
 streamWriterConsoleToFile/bin/
