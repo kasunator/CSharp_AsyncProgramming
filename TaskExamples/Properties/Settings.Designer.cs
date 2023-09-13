@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AsyncProgramming.Properties
+namespace TaskExamples.Properties
 {
 
 

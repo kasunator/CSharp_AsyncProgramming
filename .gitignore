@@ -10,8 +10,8 @@ streamWriterConsoleToFile/bin/
 streamWriterConsoleToFile/obj/
 AsyncAwaitExample/obj/
 AsyncAwaitExample/bin/
-TaskExample/bin/
-TaskExample/obj/
+TaskExamples/bin/
+TaskExamples/obj/
 TaskSchedulingAndUSBEventTest/bin/
 TaskSchedulingAndUSBEventTest/obj/
 WaitPitFalls/bin/
