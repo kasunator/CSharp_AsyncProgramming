@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCRCCalculation", "FileC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitPitfalls", "AsyncAwaitPitfalls\AsyncAwaitPitfalls.csproj", "{53BC4135-436F-4CCC-9C73-03B333E0A269}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaitPitFalls", "WaitPitFalls\WaitPitFalls.csproj", "{93D2D266-7EF4-42AC-92F0-24F85E464DFD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedulingAndUSBEventTest", "TaskSchedulingAndUSBEventTest\TaskSchedulingAndUSBEventTest.csproj", "{56ACEAD7-889A-411E-AF15-F7C6F19AA465}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitExample", "AsyncAwaitExample\AsyncAwaitExample.csproj", "{2191E35E-7D1F-4BFF-A29A-9155B0B4FFCA}"
@@ -31,10 +29,6 @@ Global
 		{53BC4135-436F-4CCC-9C73-03B333E0A269}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53BC4135-436F-4CCC-9C73-03B333E0A269}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53BC4135-436F-4CCC-9C73-03B333E0A269}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93D2D266-7EF4-42AC-92F0-24F85E464DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93D2D266-7EF4-42AC-92F0-24F85E464DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93D2D266-7EF4-42AC-92F0-24F85E464DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93D2D266-7EF4-42AC-92F0-24F85E464DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56ACEAD7-889A-411E-AF15-F7C6F19AA465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56ACEAD7-889A-411E-AF15-F7C6F19AA465}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56ACEAD7-889A-411E-AF15-F7C6F19AA465}.Release|Any CPU.ActiveCfg = Release|Any CPU
