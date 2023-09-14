@@ -105,7 +105,7 @@ namespace streamWriterConsoleToFile
 
         private void StreamWriter_Click(object sender, RoutedEventArgs e)
         {
-            writeToFileWithStreamWriter();
+            writeToFileWithStreamWriter(1);
         }
 
         private void FileStream_Click(object sender, RoutedEventArgs e)
