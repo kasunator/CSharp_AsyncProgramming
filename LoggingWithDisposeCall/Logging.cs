@@ -69,16 +69,23 @@ namespace DisposeCall
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);
+            //GC.SuppressFinalize(this);
         }
 
         protected virtual void Dispose(bool disposing)
         {
             if (disposing == true)
             {
-                // task.     
+                cancelSource?.Cancel();
+                writer?.Dispose();
+
             }
-            Console.WriteLine("Cancelling Taks");
+            /*calling cancel here when the dispose was called from the finalizer 
+             * does not shut down the task sucessfully.
+             * The best way to close the task is to call
+             * The dispose form the Windows:Closing event 
+             */ 
+            /*Console.WriteLine("Cancelling Taks");
             cancelSource.Cancel();
             try
             {
@@ -90,11 +97,12 @@ namespace DisposeCall
                 Console.WriteLine("Task Exception");
             }
 
-            writer.Dispose();
-            
+            //cancelSource?.Cancel();
+            //writer.Dispose();
+            */
         }
 
-       // ~Logging() => Dispose(false);
+        ~Logging() => Dispose(false);
 
         private bool writeFileTask(CancellationToken cancellationToken)
         {
@@ -124,22 +132,25 @@ namespace DisposeCall
         private bool writeFileTask2(CancellationToken cancellationToken)
         {
             bool retVal = true;
+            //string data;
             using (StreamWriter mywriter = new StreamWriter(log_file, true))
             {
                 while (true)
                 {
-                    if (cancellationToken.IsCancellationRequested)
-                    {
-                        mywriter.Flush();
-                        Console.WriteLine("Cancellation requested");
-                        break;
-                    }
-                    else if (writeQueue.TryDequeue(out string data))
-                    {
+                     if (cancellationToken.IsCancellationRequested)
+                     {
+                         mywriter.Flush();
+                         Console.WriteLine("Cancellation requested");
+                         break;
+                     }
+                     else if (writeQueue.IsEmpty == false)
+                     {
+                        writeQueue.TryDequeue(out string data);
                         //Console.WriteLine("wrting to file: " + data);
                         mywriter.WriteLine(data);
                         //writer.Flush();
-                    }
+                     } 
+
                 }
             }
             cancellationToken.ThrowIfCancellationRequested();

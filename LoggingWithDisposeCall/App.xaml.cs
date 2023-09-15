@@ -13,5 +13,10 @@ namespace DisposeCall
     /// </summary>
     public partial class App : Application
     {
+
+        void App_Exit(object sender, ExitEventArgs e)
+        {
+           // Console.WriteLine("Application exit");
+        }
     }
 }

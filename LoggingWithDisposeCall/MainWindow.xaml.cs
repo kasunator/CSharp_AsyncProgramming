@@ -25,7 +25,7 @@ namespace DisposeCall
         public MainWindow()
         {
             InitializeComponent();
-
+            this.Closing += DataWindow_Closing;
             // Logging(string tag = "", LogLevel level = LogLevel.DEBUG, bool save2File = false)
             log = new Logging("TEST", Logging.LogLevel.DEBUG,  true);
 
@@ -39,6 +39,12 @@ namespace DisposeCall
         private void Button_Stop_Click(object sender, RoutedEventArgs e)
         {
             log.requestCancel();
+        }
+
+        private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // log.requestCancel();
+            log.Dispose();
         }
     }
 }
