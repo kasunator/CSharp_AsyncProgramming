@@ -20,9 +20,25 @@ namespace DisposeCall
     /// </summary>
     public partial class MainWindow : Window
     {
+        Logging log;
+        int count = 0;
         public MainWindow()
         {
             InitializeComponent();
+
+            // Logging(string tag = "", LogLevel level = LogLevel.DEBUG, bool save2File = false)
+            log = new Logging("TEST", Logging.LogLevel.DEBUG,  true);
+
+        }
+
+        private void Button_Start_Click(object sender, RoutedEventArgs e)
+        {
+            log.log("count" + count++);
+        }
+
+        private void Button_Stop_Click(object sender, RoutedEventArgs e)
+        {
+            log.requestCancel();
         }
     }
 }

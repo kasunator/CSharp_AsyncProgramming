@@ -43,26 +43,33 @@ namespace DisposeCall
             logTag = tag;
             logLevel = level;
 
-            if (log_file == "" && save2File == true)
+            if (String.IsNullOrEmpty(log_file) == false && save2File == true)
             {
                 DateTime now = DateTime.Now;
                 //this.log_file = "UFWU_Log_Tag_"+ tag + now.Year + '_' + now.Month + '_' + now.Day + '_' + now.Hour + '_' + now.Minute + '_' + now.Second + ".txt";
                 log_file = Environment.CurrentDirectory + "\\UFWU_Log_Tag.txt";
-                writer = new StreamWriter(log_file, true);
+                //writer = new StreamWriter(log_file, true);
                 writeQueue = new ConcurrentQueue<string>();
                 cancelSource = new CancellationTokenSource();
                 //task = Task.Run(writeFileTask(cancelSource.Token));
                 //task = Task.Run(writeFileTask());
-                task = Task.Factory.StartNew(() => writeFileTask(cancelSource.Token), cancelSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+                //task = Task.Factory.StartNew(() => writeFileTask(cancelSource.Token), cancelSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+                task = Task.Factory.StartNew(() => writeFileTask2(cancelSource.Token), cancelSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
 
             }
    
 
         }
 
+        public void requestCancel()
+        {
+            cancelSource?.Cancel();
+        }
+
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         protected virtual void Dispose(bool disposing)
@@ -71,25 +78,75 @@ namespace DisposeCall
             {
                 // task.     
             }
+            Console.WriteLine("Cancelling Taks");
+            cancelSource.Cancel();
+            try
+            {
+                task.Wait();
+                Console.WriteLine("Task waitComplete");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Task Exception");
+            }
+
+            writer.Dispose();
+            
         }
+
+       // ~Logging() => Dispose(false);
 
         private bool writeFileTask(CancellationToken cancellationToken)
         {
             bool retVal = true;
-            while (writeQueue.TryDequeue(out string data) || cancellationToken.IsCancellationRequested)
+           
+            while (true)
             {
                 if (cancellationToken.IsCancellationRequested)
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
+                    writer.Flush();
+                    Console.WriteLine("Cancellation requested");
+                    break;
                 }
-                else
+                else if (writeQueue.TryDequeue(out string data))
                 {
+                    //Console.WriteLine("wrting to file: " + data);
                     writer.WriteLine(data);
+                    //writer.Flush();
                 }
             }
+
+            cancellationToken.ThrowIfCancellationRequested();
             return retVal;
 
         }
+
+        private bool writeFileTask2(CancellationToken cancellationToken)
+        {
+            bool retVal = true;
+            using (StreamWriter mywriter = new StreamWriter(log_file, true))
+            {
+                while (true)
+                {
+                    if (cancellationToken.IsCancellationRequested)
+                    {
+                        mywriter.Flush();
+                        Console.WriteLine("Cancellation requested");
+                        break;
+                    }
+                    else if (writeQueue.TryDequeue(out string data))
+                    {
+                        //Console.WriteLine("wrting to file: " + data);
+                        mywriter.WriteLine(data);
+                        //writer.Flush();
+                    }
+                }
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            return retVal;
+
+        }
+
 
         private bool writeFileTask()
         {
@@ -180,9 +237,11 @@ namespace DisposeCall
         private void WriteLog(string s, object o)
         {
 
-            writer?.WriteLine(s + ": " + o);
-
-            Console.Write("[" + DateTime.Now.ToString("s", DateTimeFormatInfo.InvariantInfo) + "] " + s + ": ");
+            //writer?.WriteLine(s + ": " + o);
+            //writeQueue.Enqueue();
+            string dateTimeTag = "[" + DateTime.Now.ToString("s", DateTimeFormatInfo.InvariantInfo) + "] " + s + ": ";
+            writeQueue.Enqueue(dateTimeTag + o);
+            Console.Write(dateTimeTag);
             Console.WriteLine(o);
             Console.ResetColor();
         }
