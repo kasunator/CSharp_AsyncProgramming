@@ -35,6 +35,7 @@ namespace DisposeCall
         private string logTag = "";
         public LogLevel logLevel;
         private ConcurrentQueue<string> writeQueue;
+        private BlockingCollection<string> writeBlkingQueue;
         private Task<bool> task;
         private CancellationTokenSource cancelSource;
 
@@ -48,13 +49,14 @@ namespace DisposeCall
                 DateTime now = DateTime.Now;
                 //this.log_file = "UFWU_Log_Tag_"+ tag + now.Year + '_' + now.Month + '_' + now.Day + '_' + now.Hour + '_' + now.Minute + '_' + now.Second + ".txt";
                 log_file = Environment.CurrentDirectory + "\\UFWU_Log_Tag.txt";
-                //writer = new StreamWriter(log_file, true);
-                writeQueue = new ConcurrentQueue<string>();
+
+                /* writeQueue = new ConcurrentQueue<string>();*/
+                writeBlkingQueue = new BlockingCollection<string>();
                 cancelSource = new CancellationTokenSource();
-                //task = Task.Run(writeFileTask(cancelSource.Token));
-                //task = Task.Run(writeFileTask());
+
                 //task = Task.Factory.StartNew(() => writeFileTask(cancelSource.Token), cancelSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
-                task = Task.Factory.StartNew(() => writeFileTask2(cancelSource.Token), cancelSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+                //task = Task.Factory.StartNew(() => writeFileTask2(cancelSource.Token), cancelSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+                task = Task.Factory.StartNew(() => writeFileTaskFromblkQue(cancelSource.Token), cancelSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
 
             }
    
@@ -76,6 +78,7 @@ namespace DisposeCall
         {
             if (disposing == true)
             {
+                writeBlkingQueue.TryAdd("END");
                 cancelSource?.Cancel();
                 writer?.Dispose();
 
@@ -157,6 +160,34 @@ namespace DisposeCall
             return retVal;
 
         }
+
+        private bool writeFileTaskFromblkQue(CancellationToken cancellationToken)
+        {
+            bool retVal = true;
+            //string data;
+            using (StreamWriter mywriter = new StreamWriter(log_file, true))
+            {
+                while (true)
+                {
+                    if (writeBlkingQueue.TryTake(out string data))
+                    {
+                        mywriter.WriteLine(data);
+                        if (cancellationToken.IsCancellationRequested)
+                        {
+                            mywriter.Flush();
+                            Console.WriteLine("Cancellation requested");
+                            break;
+                        }
+                    }
+
+                }
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            return retVal;
+
+        }
+
+
 
 
         private bool writeFileTask()
@@ -247,11 +278,11 @@ namespace DisposeCall
 
         private void WriteLog(string s, object o)
         {
-
             //writer?.WriteLine(s + ": " + o);
             //writeQueue.Enqueue();
             string dateTimeTag = "[" + DateTime.Now.ToString("s", DateTimeFormatInfo.InvariantInfo) + "] " + s + ": ";
-            writeQueue.Enqueue(dateTimeTag + o);
+            //writeQueue.Enqueue(dateTimeTag + o);
+            writeBlkingQueue.TryAdd(dateTimeTag + o);
             Console.Write(dateTimeTag);
             Console.WriteLine(o);
             Console.ResetColor();
