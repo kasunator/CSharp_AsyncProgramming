@@ -41,15 +41,43 @@ namespace DisposeCall
 
         public Logging(string tag = "", LogLevel level = LogLevel.DEBUG, bool save2File = false)
         {
+            bool dir_failed = false;
             logTag = tag;
             logLevel = level;
 
-            if (String.IsNullOrEmpty(log_file) == false && save2File == true)
-            {
-                DateTime now = DateTime.Now;
-                //this.log_file = "UFWU_Log_Tag_"+ tag + now.Year + '_' + now.Month + '_' + now.Day + '_' + now.Hour + '_' + now.Minute + '_' + now.Second + ".txt";
-                log_file = Environment.CurrentDirectory + "\\UFWU_Log_Tag.txt";
 
+            DateTime now = DateTime.Now;
+            //this.log_file = "UFWU_Log_Tag_"+ tag + now.Year + '_' + now.Month + '_' + now.Day + '_' + now.Hour + '_' + now.Minute + '_' + now.Second + ".txt";
+                
+            /* check if the log_file directory exists */
+            string directory_name = Environment.CurrentDirectory + "\\Log_Files";
+            string dateAndTime = DateTime.Now.ToString("s", DateTimeFormatInfo.InvariantInfo).Replace(':','-');
+            //dateAndTime = dateAndTime.Replace()
+            log_file = directory_name + "\\UFWU_Log_" + dateAndTime + ".txt";
+            if (Directory.Exists(directory_name) == false)
+            {
+                try
+                {
+                    DirectoryInfo directoryInfo = Directory.CreateDirectory(directory_name);
+                    if (directoryInfo.Exists == true )
+                    {
+                       
+                        Console.WriteLine("Failed to create director:{0}", directory_name);
+                    }
+                    else
+                    {
+                        dir_failed = true;
+                    }
+                }
+                catch(Exception e)
+                {
+                    dir_failed = true;
+                    Console.WriteLine("directoy exception:{0}", e);
+                }
+            }
+
+            if (String.IsNullOrEmpty(log_file) == false && save2File == true && dir_failed == false)
+            {
                 /* writeQueue = new ConcurrentQueue<string>();*/
                 writeBlkingQueue = new BlockingCollection<string>();
                 cancelSource = new CancellationTokenSource();
