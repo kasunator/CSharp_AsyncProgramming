@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29806.167
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCRCCalculation", "FileCRCCalculation\FileCRCCalculation.csproj", "{A08EF461-A106-4528-B6F1-0806B728399C}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "streamWriterFileStreamConsoleToFile", "streamWriterConsoleToFile\streamWriterFileStreamConsoleToFile.csproj", "{6F7EC535-0368-4989-8247-15B2DF22A869}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingWithDisposeCall", "LoggingWithDisposeCall\LoggingWithDisposeCall.csproj", "{13072BAA-F65D-49B5-A941-6D68B2E68385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksWithinTasks", "TaskWithinTasks\TasksWithinTasks.csproj", "{155141F1-DD83-435F-99E2-ED0A0BF10C57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{13072BAA-F65D-49B5-A941-6D68B2E68385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13072BAA-F65D-49B5-A941-6D68B2E68385}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13072BAA-F65D-49B5-A941-6D68B2E68385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{155141F1-DD83-435F-99E2-ED0A0BF10C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{155141F1-DD83-435F-99E2-ED0A0BF10C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{155141F1-DD83-435F-99E2-ED0A0BF10C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{155141F1-DD83-435F-99E2-ED0A0BF10C57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -77,7 +77,7 @@ namespace TaskExample
             The compiler relies on continuations (via the awaiter pattern) to resume execution
             after an await expression. This means that if running on the UI thread 
             the synchronization context ensures continuation execution resumes on the same thread.
-            The execution of the UI thread happens till the wait expression. And then returns. After this
+            The execution of the UI thread happens till the await expression. And then returns. After this
             return if there are pending work on the UI message queue then executes them, such as UI events. Once awaited 
             task completes the continuation also executes as an event on the UI message queue, leading to the execution of what is inside  
             awaiter.OnCompleted ( () = > {} ) This executes the what is remaining after the await expression.
