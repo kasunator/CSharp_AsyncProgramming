@@ -34,21 +34,67 @@ namespace TaksWithinTasks
 
         private Task<int> asynchronousIO(int i)
         {
-            return Task.Factory.StartNew(() => { Thread.Sleep(1000 * i); return i; }, TaskCreationOptions.LongRunning);
+            return Task.Factory.StartNew(() => { Thread.Sleep(1000 * i); Console.WriteLine("asynchronousIO returning"); return i; }, TaskCreationOptions.LongRunning);
         }
 
+
+        /*Expected output 
+         *  AsycIOTasksStarted
+            outer task completed
+            asynchronousIO returning
+            outer task returning
+            inner task completed:5
+         */ 
         private async void StartIOAndWaitInBackgorundThread()
         {
-            Task<Task<int>> task = Task.Factory.StartNew(async () => { int result = await asynchronousIO(5); Thread.Sleep(5000);  return result; });
+            Task<Task<int>> task = Task.Factory.StartNew(async () => {
+                int result = await asynchronousIO(5);
+                Thread.Sleep(5000);
+                Console.WriteLine("outer task returning");
+                return result; });
+
             Task<int> inner_task = await task;
             Console.WriteLine("outer task completed");
             int inner_task_result = await inner_task;
             Console.WriteLine("inner task completed:{0}", inner_task_result);
         }
 
+        /*
+         * AsycIOTasksStarted
+            Outer Task continuation Complete
+            outer task completed
+            asynchronousIO returning
+            outer task returning
+            inner task completed:5 
+        */
+
+        private async void StartIOAndWaitInBackgorundThreadWithContinuation()
+        {
+            Task<Task<int>> task = Task.Factory.StartNew(async () =>
+            {
+                int result = await asynchronousIO(5);
+                Thread.Sleep(5000);
+                Console.WriteLine("outer task returning");
+                return result;
+            }).ContinueWith(x => { Console.WriteLine("Outer Task continuation Complete"); return x.Result; });
+
+            Task<int> inner_task = await task;
+            Console.WriteLine("outer task completed");
+            int inner_task_result = await inner_task;
+            Console.WriteLine("inner task completed:{0}", inner_task_result);
+        }
+
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             StartIOAndWaitInBackgorundThread();
+            Console.WriteLine("AsycIOTasksStarted");
+        }
+
+        private void Button_Click_with_cnt(object sender, RoutedEventArgs e)
+        {
+            StartIOAndWaitInBackgorundThreadWithContinuation();
             Console.WriteLine("AsycIOTasksStarted");
         }
     }
