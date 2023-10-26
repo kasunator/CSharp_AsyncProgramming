@@ -38,7 +38,7 @@ namespace TaksWithinTasks
         }
 
 
-        /*Expected output 
+        /* Acutual output: 
          *  AsycIOTasksStarted
             outer task completed
             asynchronousIO returning
@@ -59,7 +59,7 @@ namespace TaksWithinTasks
             Console.WriteLine("inner task completed:{0}", inner_task_result);
         }
 
-        /*
+        /* Actual Output:
          * AsycIOTasksStarted
             Outer Task continuation Complete
             outer task completed
@@ -84,6 +84,37 @@ namespace TaksWithinTasks
             Console.WriteLine("inner task completed:{0}", inner_task_result);
         }
 
+        /* Actual Output:
+         *  Outer Task continuation Complete
+            Outer task Wait complete
+            outer task completed
+            AsycIOTasksStarted
+            asynchronousIO returning
+            outer task returning
+            inner task completed:5
+.
+        */
+
+        private async void StartIOAndWaitInBackgorundThreadWithWait()
+        {
+            Task<Task<int>> task = Task.Factory.StartNew(async () =>
+            {
+                int result = await asynchronousIO(5);
+                Thread.Sleep(5000);
+                Console.WriteLine("outer task returning");
+                return result;
+            }).ContinueWith(x => { Console.WriteLine("Outer Task continuation Complete"); return x.Result; });
+
+            task.Wait();
+            Console.WriteLine("Outer task Wait complete");
+
+            Task<int> inner_task = await task;
+            Console.WriteLine("outer task completed");
+            int inner_task_result = await inner_task;
+            Console.WriteLine("inner task completed:{0}", inner_task_result);
+        }
+
+
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -95,6 +126,12 @@ namespace TaksWithinTasks
         private void Button_Click_with_cnt(object sender, RoutedEventArgs e)
         {
             StartIOAndWaitInBackgorundThreadWithContinuation();
+            Console.WriteLine("AsycIOTasksStarted");
+        }
+
+        private void Button_Click_then_wait(object sender, RoutedEventArgs e)
+        {
+            StartIOAndWaitInBackgorundThreadWithWait();
             Console.WriteLine("AsycIOTasksStarted");
         }
     }

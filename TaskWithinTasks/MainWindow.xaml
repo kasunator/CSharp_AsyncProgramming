@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Start" HorizontalAlignment="Left" Margin="325,190,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Start with cont.." HorizontalAlignment="Left" Margin="325,249,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_with_cnt"/>
+        <Button Content="Start with cont.." HorizontalAlignment="Left" Margin="305,249,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_with_cnt"/>
+        <Button Content="Start then wait" HorizontalAlignment="Left" Margin="305,299,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_then_wait"/>
     </Grid>
 </Window>
