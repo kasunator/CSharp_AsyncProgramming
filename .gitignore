@@ -22,3 +22,5 @@ TaskWithinTasks/bin/
 TaskWithinTasks/obj/
 AsyncWebDownload/bin/
 AsyncWebDownload/obj/
+MorseCodeGenerator/bin/
+MorseCodeGenerator/obj
