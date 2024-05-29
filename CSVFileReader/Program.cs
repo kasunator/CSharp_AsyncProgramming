@@ -38,16 +38,47 @@ namespace CVSFileReader
         {
             var filePath = "rpeated_sn.csv";
             var records = ReadCsvFile(filePath);
+            List<UInt64> reptd_ser_number = new List<UInt64>();
+            List< prog_record > reptd_ser_record = new List<prog_record>();
+            List<prog_record> collided_ser_record = new List<prog_record>();
 
             foreach (var record in records)
             {
-                if (record.ctx_serialization == 9065620524302389)
+                /*if (record.ctx_serialization == 9065620524302389)
                 {
                     Console.WriteLine(record.nid_universal_updater_record);
                     
+                }*/
+                /* first find the repeated serial numbers*/
+                foreach (var inner in records)
+                {
+                    if (inner.ctx_serialization == record.ctx_serialization)
+                    {
+                        reptd_ser_number.Add(inner.ctx_serialization);
+                        reptd_ser_record.Add(inner);
+                    }
+                }
+            }
+            Console.WriteLine("reptd_ser_number count: " + reptd_ser_number.Count);
+            Console.WriteLine("reptd_ser_record count: " + reptd_ser_record.Count);
+
+            foreach (var record in reptd_ser_record)
+            {
+                foreach(var inner in reptd_ser_record)
+                {
+                    if (record.ctx_serialization == inner.ctx_serialization)
+                    {
+                        if (record.ctx_microcontroller_sn != inner.ctx_microcontroller_sn)
+                        {
+                            collided_ser_record.Add(record);
+                        }
+                    }
                 }
                 
             }
+
+            Console.WriteLine("collided_ser_record count: " + collided_ser_record.Count);
+
             Console.ReadLine();
         }
 
