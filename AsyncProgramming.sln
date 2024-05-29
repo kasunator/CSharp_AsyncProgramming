@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncWebDownload", "AsyncWe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MorseCodeGenerator", "MorseCodeGenerator\MorseCodeGenerator.csproj", "{E465AF63-B1F5-43C3-B9CC-ADAE39BA63CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVFileReader", "CSVFileReader\CSVFileReader.csproj", "{D0216AF7-239E-412D-8676-965998883899}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{E465AF63-B1F5-43C3-B9CC-ADAE39BA63CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E465AF63-B1F5-43C3-B9CC-ADAE39BA63CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E465AF63-B1F5-43C3-B9CC-ADAE39BA63CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0216AF7-239E-412D-8676-965998883899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0216AF7-239E-412D-8676-965998883899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0216AF7-239E-412D-8676-965998883899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0216AF7-239E-412D-8676-965998883899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

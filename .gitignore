@@ -23,4 +23,7 @@ TaskWithinTasks/obj/
 AsyncWebDownload/bin/
 AsyncWebDownload/obj/
 MorseCodeGenerator/bin/
-MorseCodeGenerator/obj
+MorseCodeGenerator/obj/
+CSVFileReader/bin/
+CSVFileReader/obj/
+packages/
