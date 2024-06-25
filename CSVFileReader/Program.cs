@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
@@ -52,16 +53,27 @@ namespace CVSFileReader
                 /* first find the repeated serial numbers*/
                 foreach (var inner in records)
                 {
-                    if (inner.ctx_serialization == record.ctx_serialization)
+                    if (inner.ctx_serialization == record.ctx_serialization && inner.ctx_machine_name != record.ctx_machine_name)
                     {
-                        reptd_ser_number.Add(inner.ctx_serialization);
-                        reptd_ser_record.Add(inner);
+                        DateTime recordDateTime = DateTime.Parse(record.ddt_time_programmed);
+                        DateTime innerDateTime = DateTime.Parse(inner.ddt_time_programmed);
+                        if (innerDateTime.Year == recordDateTime.Year && innerDateTime.Month == recordDateTime.Month && innerDateTime.Day == recordDateTime.Day
+                            && innerDateTime.Hour == recordDateTime.Hour && innerDateTime.Minute == recordDateTime.Minute )
+                        {
+                            int seconds_diff = Math.Abs( recordDateTime.Second - innerDateTime.Second);
+                            if (seconds_diff < 10)
+                            {
+                                reptd_ser_number.Add(inner.ctx_serialization);
+                                reptd_ser_record.Add(inner);
+                            }
+                        }
+
                     }
                 }
             }
             Console.WriteLine("reptd_ser_number count: " + reptd_ser_number.Count);
             Console.WriteLine("reptd_ser_record count: " + reptd_ser_record.Count);
-
+#if COMPILE
             foreach (var record in reptd_ser_record)
             {
                 foreach(var inner in reptd_ser_record)
@@ -76,8 +88,14 @@ namespace CVSFileReader
                 }
                 
             }
+#endif 
+            foreach(var record in reptd_ser_record)
+            {
+                Console.WriteLine("reptd_ser_record serialization: " + record.ctx_serialization);
+            }
 
-            Console.WriteLine("collided_ser_record count: " + collided_ser_record.Count);
+
+            //Console.WriteLine("collided_ser_record count: " + collided_ser_record.Count);
 
             Console.ReadLine();
         }
