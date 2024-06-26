@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MorseCodeGenerator", "Morse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVFileReader", "CSVFileReader\CSVFileReader.csproj", "{D0216AF7-239E-412D-8676-965998883899}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomNumberGen", "RandomNumberGen\RandomNumberGen.csproj", "{2B60D98B-2D68-4865-A9EF-EC19A71C16EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{D0216AF7-239E-412D-8676-965998883899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0216AF7-239E-412D-8676-965998883899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0216AF7-239E-412D-8676-965998883899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B60D98B-2D68-4865-A9EF-EC19A71C16EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B60D98B-2D68-4865-A9EF-EC19A71C16EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B60D98B-2D68-4865-A9EF-EC19A71C16EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B60D98B-2D68-4865-A9EF-EC19A71C16EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
