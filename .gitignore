@@ -29,3 +29,5 @@ CSVFileReader/obj/
 packages/
 RandomNumberGen/bin/
 RandomNumberGen/obj/
+USBDeviceDetect/obj/
+USBDeviceDetect/bin/
