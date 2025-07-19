@@ -37,3 +37,6 @@ crc16/bin
 crc16/obj
 Classinheritance/bin/
 Classinheritance/obj/
+WindowsSerialPorts/bin
+WindowsSerialPorts/obj
+

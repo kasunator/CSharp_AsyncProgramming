@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassInheritance", "ClassIn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crc16", "crc16\crc16.csproj", "{66268EAE-CED6-4A33-BCEC-8D7B501D82B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsSerialPorts", "WindowsSerialPorts\WindowsSerialPorts.csproj", "{72282027-7460-46A5-9473-427CC36D2B75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{66268EAE-CED6-4A33-BCEC-8D7B501D82B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66268EAE-CED6-4A33-BCEC-8D7B501D82B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66268EAE-CED6-4A33-BCEC-8D7B501D82B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72282027-7460-46A5-9473-427CC36D2B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72282027-7460-46A5-9473-427CC36D2B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72282027-7460-46A5-9473-427CC36D2B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72282027-7460-46A5-9473-427CC36D2B75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
