@@ -39,10 +39,7 @@ namespace WindowsSerialPorts
 
         SerialCdcAcmDevice serialCdcAcmDevice;
 
-        private void MainWindow_Closing(Object sender, ConsoleCancelEventArgs e)
-        {
-            DisposeSerialPort();
-        }
+
 
 
         public void DisposeSerialPort()
