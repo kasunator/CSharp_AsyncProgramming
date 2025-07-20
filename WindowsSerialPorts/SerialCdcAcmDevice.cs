@@ -66,9 +66,36 @@ namespace WindowsSerialPorts
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exxcpetion at StartListening: {0}", ex.ToString());
+                Console.WriteLine("Excpetion at StartListening: {0}", ex.ToString());
             }
 
+        }
+
+
+        public void StartListeningAsync()
+        {
+            try
+            {
+                mySerialPort.DataReceived += MySerialPort_DataReceived;
+                mySerialPort.Open();
+            }
+            catch (Exception ex) { Console.WriteLine("Excpetion at StartListening: {0}", ex.ToString()); }
+
+        }
+
+        private void MySerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                SerialPort sp = (SerialPort)sender;
+                byte rxByte = (byte)sp.ReadByte();
+                byte[] rxByteArray = new byte[1] { rxByte };
+                Console.WriteLine("{0}", Encoding.UTF8.GetString(rxByteArray));
+
+            } catch (Exception ex) 
+            { 
+                Console.WriteLine("MySerialPort_DataReceived {0}",ex.ToString()); 
+            }
         }
 
         public void StopListening()

@@ -41,7 +41,8 @@ namespace WindowsSerialPorts
 
             serialCdcAcmDevice = new SerialCdcAcmDevice(VID, pid_list);
 
-            serialCdcAcmDevice.StartListening();
+            //serialCdcAcmDevice.StartListening();
+            serialCdcAcmDevice.StartListeningAsync();
 
         }
 
