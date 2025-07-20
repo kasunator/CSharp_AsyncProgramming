@@ -77,12 +77,15 @@ namespace WindowsSerialPorts
             try
             {
                 mySerialPort.DataReceived += MySerialPort_DataReceived;
+                mySerialPort.ErrorReceived += ErrorReceivedHandler;
                 mySerialPort.Open();
             }
             catch (Exception ex) { Console.WriteLine("Excpetion at StartListening: {0}", ex.ToString()); }
 
         }
-
+        /* The event handler that will be called when the data is received .
+            The handler runs on a background thread.
+         */
         private void MySerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
@@ -95,6 +98,33 @@ namespace WindowsSerialPorts
             } catch (Exception ex) 
             { 
                 Console.WriteLine("MySerialPort_DataReceived {0}",ex.ToString()); 
+            }
+        }
+
+
+        /* the event handler that will be called when there is an error. 
+         * The event handler runs on a backroungd thread */
+        private static void ErrorReceivedHandler(object sender, SerialErrorReceivedEventArgs e)
+        {
+            Console.WriteLine("Serial Error: " + e.EventType);
+
+            switch (e.EventType)
+            {
+                case SerialError.Frame:
+                    Console.WriteLine("Framing error detected.");
+                    break;
+                case SerialError.Overrun:
+                    Console.WriteLine("Overrun error detected.");
+                    break;
+                case SerialError.RXOver:
+                    Console.WriteLine("Input buffer overflow.");
+                    break;
+                case SerialError.RXParity:
+                    Console.WriteLine("Parity error.");
+                    break;
+                case SerialError.TXFull:
+                    Console.WriteLine("Transmit buffer full.");
+                    break;
             }
         }
 

@@ -28,10 +28,27 @@ namespace WindowsSerialPorts
         String[] pid_list = new String[1] { "0001" };
         public MainWindow()
         {
+            this.Closing += MainWindow_Closing;
             InitializeComponent();
         }
 
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DisposeSerialPort();
+        }
+
         SerialCdcAcmDevice serialCdcAcmDevice;
+
+        private void MainWindow_Closing(Object sender, ConsoleCancelEventArgs e)
+        {
+            DisposeSerialPort();
+        }
+
+
+        public void DisposeSerialPort()
+        {
+            serialCdcAcmDevice?.StopListening(); ;
+        }
 
         private void Start_Cnct_Click(object sender, RoutedEventArgs e)
         {
