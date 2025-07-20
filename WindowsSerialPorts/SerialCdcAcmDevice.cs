@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO.Ports;
 using System.IO;
+using System.Web;
 
 namespace WindowsSerialPorts
 {
@@ -24,22 +25,27 @@ namespace WindowsSerialPorts
 
         public SerialCdcAcmDevice(String vid, String[] pid_list)
         {
-            List<String> port_list = GetFilteredComList(vid, pid_list);
-
-            if (port_list != null || port_list.Count != 0)
+            try
             {
-                myComportNumber = port_list[0];
-                mySerialPort = new SerialPort();
+                List<String> port_list = GetFilteredComList(vid, pid_list);
 
-                mySerialPort.PortName = myComportNumber;
-                mySerialPort.BaudRate = 9600;
-                mySerialPort.Parity = Parity.None;
-                mySerialPort.DataBits = 8;
-                mySerialPort.StopBits = StopBits.One;
-                mySerialPort.Handshake = Handshake.None;
+                if (port_list != null && port_list.Count != 0)
+                {
+                    myComportNumber = port_list[0];
+                    mySerialPort = new SerialPort();
+
+                    mySerialPort.PortName = myComportNumber;
+                    mySerialPort.BaudRate = 9600;
+                    mySerialPort.Parity = Parity.None;
+                    mySerialPort.DataBits = 8;
+                    mySerialPort.StopBits = StopBits.One;
+                    mySerialPort.Handshake = Handshake.None;
+                }
             }
-
-
+            catch (Exception ex) 
+            {
+                Console.WriteLine("Exxcpetion at SerialCdcAcmDevice: {0}", ex.ToString());            
+            }
 
         }
 
@@ -53,25 +59,43 @@ namespace WindowsSerialPorts
 
         public void StartListening()
         {
-            mySerialPort.Open();
-            StartListening(serial_recv_wait_handle);
+            try
+            {
+                mySerialPort.Open();
+                _startListening(serial_recv_wait_handle);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exxcpetion at StartListening: {0}", ex.ToString());
+            }
+
         }
 
         public void StopListening()
         {
-            StopListening(serial_recv_wait_handle);
+            _stopListening(serial_recv_wait_handle);
         }
 
-        private void StartListening(EventWaitHandle waitHandle)
+        private void _startListening(EventWaitHandle waitHandle)
         {
             serial_port_thread_done = false;
             new Thread(() => SerialPortReceive(waitHandle, mySerialPort)).Start();
         }
 
-        private void StopListening(EventWaitHandle waitHandle)
+        private void _stopListening(EventWaitHandle waitHandle)
         {
-            serial_port_thread_done = true;
-            waitHandle?.Set();
+            try
+            {
+                mySerialPort.Close();
+
+                //serial_port_thread_done = true;
+                //waitHandle?.Set();
+
+            }
+            catch(Exception ex) 
+            {
+                Console.WriteLine("Exxcpetion at StartListening: {0}", ex.ToString());
+            }
         }
 
         /* Called by the background thread that is polling for received bytes from the serial port. 
@@ -79,18 +103,32 @@ namespace WindowsSerialPorts
          * are found, the application is notified via the handler. */
         private void SerialPortReceive(EventWaitHandle waitHandle, SerialPort serialPort)
         {
-            while (true)
+            try
             {
+                while (true)
+                {
+                    byte rxByte= (byte)serialPort.ReadByte();
+                    byte[] rxByteArray = new byte[1] { rxByte };
+                    Console.WriteLine("{0}", Encoding.UTF8.GetString(rxByteArray) );
 
-
+                }
             }
-
-
-
+            catch(Exception ex) 
+            {
+                Console.WriteLine("Excpetion at SerialPortReceive: {0}", ex.ToString());
+            }
 
         }
 
-
+        public void SerialPortSend_TestMsg()
+        {
+            try
+            {
+                byte[] txByteArray = new byte[] { 0x12, 0x00, 0xff, 0x03, 0x0A, 0x0B, 0x0C, 0x71, 0xE9, 0x13 };
+                mySerialPort.Write(txByteArray, 0, txByteArray.Length);
+            }
+            catch (Exception ex) { Console.WriteLine("Excpetion at SerialPortSend_TestMsg {0}", ex.ToString()); }
+        }
 
 
 

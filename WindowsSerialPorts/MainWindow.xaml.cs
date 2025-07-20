@@ -23,6 +23,9 @@ namespace WindowsSerialPorts
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        String VID = "1234";
+        String[] pid_list = new String[1] { "0001" };
         public MainWindow()
         {
             InitializeComponent();
@@ -33,13 +36,23 @@ namespace WindowsSerialPorts
         private void Start_Cnct_Click(object sender, RoutedEventArgs e)
         {
             //List<SetupApiUSBDevInfo> GetComportInfoList(string vid, string[] pid_list)
-            string[] pid_list = new string[1] { "001" };
-            //List<SetupApiUSBDevInfo>  comlist = GetComportInfoList("123", pid_list);
+            //string[] pid_list = new string[1] { "001" };
+            //List<SetupApiUSBDevInfo>  comlist = GetComportInfoList(VID, pid_list);
 
-            serialCdcAcmDevice = new SerialCdcAcmDevice("123", pid_list);
+            serialCdcAcmDevice = new SerialCdcAcmDevice(VID, pid_list);
 
+            serialCdcAcmDevice.StartListening();
 
+        }
 
+        private void Disconnect_Click(object sender, RoutedEventArgs e)
+        {
+            serialCdcAcmDevice.StopListening();
+        }
+
+        private void Send_Test_Msg_Click(object sender, RoutedEventArgs e)
+        {
+            serialCdcAcmDevice.SerialPortSend_TestMsg();
         }
     }
 }

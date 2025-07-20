@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="start connect" HorizontalAlignment="Left" Margin="135,194,0,0" VerticalAlignment="Top" Click="Start_Cnct_Click"/>
+        <Button Content="start connect" HorizontalAlignment="Left" Margin="135,194,0,0" VerticalAlignment="Top" Click="Start_Cnct_Click" Height="23" Width="80"/>
+        <Button Content="Disconnect" HorizontalAlignment="Left" Margin="320,194,0,0" VerticalAlignment="Top" Click="Disconnect_Click" Width="80" Height="23"/>
+        <Border BorderBrush="Black" BorderThickness="1">
+            <Button Content="Send Test" HorizontalAlignment="Left" Height="18" Margin="494,198,0,0" VerticalAlignment="Top"  Click="Send_Test_Msg_Click"  Width="100"/>
+        </Border>
 
     </Grid>
 </Window>
