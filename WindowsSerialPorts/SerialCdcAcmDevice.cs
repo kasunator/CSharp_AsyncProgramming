@@ -181,12 +181,21 @@ namespace WindowsSerialPorts
         {
             try
             {
-                byte[] txByteArray = new byte[] { 0x12, 0x00, 0xff, 0x03, 0x0A, 0x0B, 0x0C, 0x71, 0xE9, 0x13 };
+                byte[] txByteArray = new byte[] { 0x12, 0x00, 0xff, 0x00, 0x03, 0x0A, 0x0B, 0x0C, 0x5B, 0xBD, 0x13 };
                 mySerialPort.Write(txByteArray, 0, txByteArray.Length);
             }
             catch (Exception ex) { Console.WriteLine("Excpetion at SerialPortSend_TestMsg {0}", ex.ToString()); }
         }
 
+        public void SerialPortSend_RequestInfoMsg()
+        {
+            try
+            {
+                byte[] txByteArray = new byte[] { 0x12, 0x00, 0x01, 0x00, 0x2E, 0xE0, 0x13 };
+                mySerialPort.Write(txByteArray, 0, txByteArray.Length);
+            }
+            catch (Exception ex) { Console.WriteLine("Excpetion at SerialPortSend_TestMsg {0}", ex.ToString()); }
+        }
 
 
 

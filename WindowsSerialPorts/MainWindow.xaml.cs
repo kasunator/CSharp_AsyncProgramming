@@ -69,5 +69,11 @@ namespace WindowsSerialPorts
         {
             serialCdcAcmDevice.SerialPortSend_TestMsg();
         }
+
+        private void Get_info_Click(object sender, RoutedEventArgs e)
+        {
+            serialCdcAcmDevice.SerialPortSend_RequestInfoMsg();
+
+        }
     }
 }

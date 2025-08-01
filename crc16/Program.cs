@@ -10,8 +10,9 @@ namespace crc16
     {
         static void Main(string[] args)
         {
-            byte[] input_data = new byte[] { 0x00, 0xFF, 0x03, 0x0A, 0x0B, 0x0C };
-           // CRC16 crc16 = new CRC16();
+            //byte[] input_data = new byte[] { 0x00, 0xFF,0x00, 0x03, 0x0A, 0x0B, 0x0C };
+            byte[] input_data = new byte[] { 0x00, 0x1, 0x00};
+            // CRC16 crc16 = new CRC16();
             ushort crc16_result = CRC16.CalculateCRC16(input_data, 0 , (ushort) input_data.Length);
 
             Console.WriteLine("result: {0:X}", crc16_result);
