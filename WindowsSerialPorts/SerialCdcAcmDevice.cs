@@ -76,9 +76,12 @@ namespace WindowsSerialPorts
         {
             try
             {
-                mySerialPort.DataReceived += MySerialPort_DataReceived;
-                mySerialPort.ErrorReceived += ErrorReceivedHandler;
-                mySerialPort.Open();
+                if (mySerialPort != null)
+                {
+                    mySerialPort.DataReceived += MySerialPort_DataReceived;
+                    mySerialPort.ErrorReceived += ErrorReceivedHandler;
+                    mySerialPort.Open();
+                }
             }
             catch (Exception ex) { Console.WriteLine("Excpetion at StartListening: {0}", ex.ToString()); }
 
@@ -91,9 +94,18 @@ namespace WindowsSerialPorts
             try
             {
                 SerialPort sp = (SerialPort)sender;
-                byte rxByte = (byte)sp.ReadByte();
-                byte[] rxByteArray = new byte[1] { rxByte };
-                Console.WriteLine("{0}", Encoding.UTF8.GetString(rxByteArray));
+                Console.WriteLine("total_bytes_Receved {0}", sp.BytesToRead);
+                /*Reading bybte by byte does not work */
+                //byte rxByte = (byte)sp.ReadByte();
+                //byte[] rxByteArray = new byte[1] { rxByte };
+                //Console.WriteLine("{0}", Encoding.UTF8.GetString(rxByteArray));
+                byte[] rxByteArray = new byte[sp.BytesToRead];
+                sp.Read(rxByteArray, 0, sp.BytesToRead);
+                foreach (byte b in rxByteArray) 
+                {
+                    Console.WriteLine("{0:x}", b);
+                }
+                
 
             } catch (Exception ex) 
             { 
