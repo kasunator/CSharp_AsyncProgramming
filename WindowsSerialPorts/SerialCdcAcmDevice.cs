@@ -40,6 +40,9 @@ namespace WindowsSerialPorts
                     mySerialPort.DataBits = 8;
                     mySerialPort.StopBits = StopBits.One;
                     mySerialPort.Handshake = Handshake.None;
+                    //MainWindow.AddUsbEvent(DeviceConnectionEvent);
+
+
                 }
             }
             catch (Exception ex) 

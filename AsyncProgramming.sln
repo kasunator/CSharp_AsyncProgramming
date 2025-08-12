@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crc16", "crc16\crc16.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsSerialPorts", "WindowsSerialPorts\WindowsSerialPorts.csproj", "{72282027-7460-46A5-9473-427CC36D2B75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllipticCurveDiffieHellmanKeyExchange", "EllipticCurveDiffieHellmanKeyExchange\EllipticCurveDiffieHellmanKeyExchange.csproj", "{8113058A-55DA-4B2B-B2EE-562F33A80C1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{72282027-7460-46A5-9473-427CC36D2B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72282027-7460-46A5-9473-427CC36D2B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72282027-7460-46A5-9473-427CC36D2B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8113058A-55DA-4B2B-B2EE-562F33A80C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8113058A-55DA-4B2B-B2EE-562F33A80C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8113058A-55DA-4B2B-B2EE-562F33A80C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8113058A-55DA-4B2B-B2EE-562F33A80C1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
