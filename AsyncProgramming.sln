@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllipticCurveDiffieHellmanK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllipticalCurveDeffiHellmanWithTinyCrypt", "EllipticalCurveDeffiHellmanWithTinyCrypt\EllipticalCurveDeffiHellmanWithTinyCrypt.csproj", "{5C60C186-9B83-4BFC-A194-D5F70F380FBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwiatOnPeriodicTimerAndEventWaitHandle", "AwiatOnPeriodicTimerAndEventWaitHandle\AwiatOnPeriodicTimerAndEventWaitHandle.csproj", "{B71A19D7-8142-4D75-82B1-2147738395CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{5C60C186-9B83-4BFC-A194-D5F70F380FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C60C186-9B83-4BFC-A194-D5F70F380FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C60C186-9B83-4BFC-A194-D5F70F380FBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B71A19D7-8142-4D75-82B1-2147738395CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71A19D7-8142-4D75-82B1-2147738395CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71A19D7-8142-4D75-82B1-2147738395CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71A19D7-8142-4D75-82B1-2147738395CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
