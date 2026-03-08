@@ -41,3 +41,6 @@ WindowsSerialPorts/bin
 WindowsSerialPorts/obj
 EllipticCurveDiffieHellmanKeyExchange/bin
 EllipticCurveDiffieHellmanKeyExchange/obj
+EllipticalCurveDeffiHellmanWithTinyCrypt/bin
+EllipticalCurveDeffiHellmanWithTinyCrypt/obj
+

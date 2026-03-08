@@ -40,7 +40,6 @@ namespace EllipticCurveDiffieHellmanKeyExchange
             ECDiffieHellman b = ECDiffieHellman.Create(ECCurve.NamedCurves.nistP256);
             ECDiffieHellmanPublicKey bPubKey = b.PublicKey;
 
-            Console.WriteLine($"a private key{ a.ToString() }");
 
 
             // Each side derives the shared secret
@@ -55,6 +54,36 @@ namespace EllipticCurveDiffieHellmanKeyExchange
 
             // They will match
             Console.WriteLine("Keys match: " + aKey.AsSpan().SequenceEqual(bKey));
+        }
+
+
+        static byte[] HkdfSha256(ReadOnlySpan<byte> ikm, ReadOnlySpan<byte> salt, ReadOnlySpan<byte> info, int length)
+        {
+            // HKDF-Extract
+            byte[] prk;
+            using (var hmac = new HMACSHA256(salt.Length == 0 ? new byte[32] : salt.ToArray()))
+                prk = hmac.ComputeHash(ikm.ToArray());
+
+            // HKDF-Expand
+            byte[] okm = new byte[length];
+            byte[] t = Array.Empty<byte>();
+            int pos = 0, counter = 1;
+            using var hmac = new HMACSHA256(prk);
+            while (pos < length)
+            {
+                byte[] input = new byte[t.Length + info.Length + 1];
+                Buffer.BlockCopy(t, 0, input, 0, t.Length);
+                Buffer.BlockCopy(info.ToArray(), 0, input, t.Length, info.Length);
+                input[^1] = (byte)counter++;
+
+                t = hmac.ComputeHash(input);
+                int take = Math.Min(t.Length, length - pos);
+                Buffer.BlockCopy(t, 0, okm, pos, take);
+                pos += take;
+            }
+            CryptographicOperations.ZeroMemory(prk);
+            CryptographicOperations.ZeroMemory(t);
+            return okm;
         }
 
     }
