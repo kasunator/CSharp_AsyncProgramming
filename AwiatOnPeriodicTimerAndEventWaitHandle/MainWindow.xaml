@@ -9,6 +9,7 @@
     <Grid>
         <Button Content="Start Task" HorizontalAlignment="Left" Height="55" Margin="165,179,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
         <Button Content="Cancel Task" HorizontalAlignment="Left" Height="55" Margin="475,179,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click_1"/>
+        <Button Content="Set Signal" HorizontalAlignment="Left" Height="55" Margin="320,304,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_2"/>
 
     </Grid>
 </Window>
