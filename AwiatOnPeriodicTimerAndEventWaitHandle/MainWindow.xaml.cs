@@ -87,9 +87,10 @@ namespace AwiatOnPeriodicTimerAndEventWaitHandle
                     
                     //tcs.TrySetResult(true);         //set the result of the task completion source, which will be received by the "awaiting task" 
                     var localTcs = (TaskCompletionSource<object>)state;
-                    //localTcs.TrySetResult(null);
-                    registration?.Unregister(null); //unregister the callback
-                    localTcs.SetResult(null);
+                    
+                    //registration?.Unregister(null); //unregister the callback
+                    localTcs.TrySetResult(null);
+                    //localTcs.SetResult(null);
                 },
                 tcs, //I gues this is the object that will be passed when above callback is called 
                 Timeout.Infinite, //int millisecondsTimeOutInterval : Timeout.Infinite no timeout
@@ -112,6 +113,65 @@ namespace AwiatOnPeriodicTimerAndEventWaitHandle
 
             return tcs.Task; //retrun the 
         }
+
+        /* Registering wiat handles to tasks :
+         Important facts and observations 
+        The parameter list for the RegisterWaitForSingleObject() is as follows 
+         RegisterWaitForSingleObject(WaitHandle waitObject, WaitOrTimerCallback callBack, object state, int millisecondsTimeOutInterval, bool executeOnlyOnce)
+            the the callback has the following signature WaitOrTimerCallback(object state, bool timedOut);
+            The "object state" is the same parameter passed as "object state" to  RegisterWaitForSingleObject(.., object state, ..)
+            Importatn oversvations:
+                RegisterWaitForSingleObject(.., bool executeOnlyOnce)
+            if this is true you don't need to call registration?.Unregister(null) in the WaitOrTimerCallback().
+            But if it is false you have to call Unregister. Or else even re-registering the WaitHandle will also fail.
+            
+            You cant await on the same task even if the RegisterWaitForSingleObject(.., bool executeOnlyOnce) is set false without re registering;
+            Awaiting on a task that has already comleted will return instantly. 
+
+         */
+
+
+        private static Task WaitHandleAsyncTest(WaitHandle handle, CancellationToken token = default)
+        {
+            TaskCompletionSource<object> tcs = new TaskCompletionSource<object>(TaskCreationOptions.RunContinuationsAsynchronously);
+            CancellationTokenRegistration ctr = default(CancellationTokenRegistration);
+            RegisteredWaitHandle registration = null;
+
+            /*RegisterWaitForSingleObject(WaitHandle waitObject, WaitOrTimerCallback callBack, object state, int millisecondsTimeOutInterval, bool executeOnlyOnce)*/
+            registration = ThreadPool.RegisterWaitForSingleObject(
+                handle,
+                (state, timedOut) =>
+                {
+                    Console.WriteLine("Wait Or Timeout call back");
+                    var localTcs = (TaskCompletionSource<object>)state;
+                    //registration?.Unregister(null); //unregister the callback
+                    localTcs.TrySetResult(null);
+  
+                },
+                tcs,  
+                Timeout.Infinite,
+                false); //wait only once
+
+            if (token.CanBeCanceled)
+            {
+                ctr = token.Register(() =>
+                {
+                    registration?.Unregister(null);
+                    tcs.TrySetCanceled(token); //set the result of the task completion source as canceld, which will be received byt the aiaiting task.
+                });
+            }
+
+            tcs.Task.ContinueWith(_ =>
+            {
+                Console.WriteLine("running tcs Continueing");
+                //registration?.Unregister(null);
+                //ctr.Dispose();
+            }, TaskScheduler.Default);
+
+            return tcs.Task; //retrun the 
+        }
+
+
 
         private void DoPeriodicWork()
         {
@@ -155,11 +215,29 @@ namespace AwiatOnPeriodicTimerAndEventWaitHandle
             }
         }
 
+        private async Task RunAndAwaitSignalTest(EventWaitHandle signal, CancellationToken token)
+        {
+            Task signalTask = WaitHandleAsyncTest(signal, token);
+
+            await signalTask;
+            Console.WriteLine("signal 1 received");
+            signalTask = WaitHandleAsyncTest(signal, token);
+            await signalTask;
+            Console.WriteLine("signal 2 received");
+            while (true) ;
+        }
+
 
         public void StartSignalOrPeriodTask()
         {
             _signalAndPeriodWorkerTask = Task.Run(() => RunAndAwaitPeriodOrSignal(_signal, _cts.Token));
             Console.WriteLine("Signal Or Periodic Task Started");
+        }
+
+        public void StartSignalTestTask()
+        {
+            Task.Run(() => RunAndAwaitSignalTest(_signal, _cts.Token));
+            Console.WriteLine("Signal Test Task Started");
         }
 
         public void TriggerSignalToTask()
@@ -186,7 +264,8 @@ namespace AwiatOnPeriodicTimerAndEventWaitHandle
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //startTaskLoopWithTaskDelay();
-            StartSignalOrPeriodTask();
+            //StartSignalOrPeriodTask();
+            StartSignalTestTask();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
